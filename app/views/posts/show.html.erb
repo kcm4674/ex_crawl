@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<div>
+    <h2>댓글</h2>
+        <%= form_tag("/posts/#{@post.id}/comments", method: "post") do %>
+        <%= text_field_tag(:co_body, nil) %>
+        <%= submit_tag("댓글 작성") %>
+    <% end %>
+</div>
+
+<div>
+    <h2>댓글 목록</h2>
+    <% @post.comments.each do |x| %>
+        <%= x.body %>
+        <%= link_to "글 삭제", "/posts/#{@post.id}/comments/#{x.id}", method: "delete" %>
+        <hr/>
+    <% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
