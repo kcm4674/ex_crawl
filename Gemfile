@@ -65,3 +65,6 @@ gem 'devise'
 gem 'devise-i18n' # Devise 번역 Gem
 
 gem 'rails_db'
+
+## KEY 보안을 위한 Gem
+gem 'figaro'
