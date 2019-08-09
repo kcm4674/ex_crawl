@@ -1,2 +1,45 @@
-<h1>NCafe#index</h1>
-<p>Find me in app/views/n_cafe/index.html.erb</p>
+<% @data_list.each do |t| %>
+    <div class="box"><%= link_to t.title, "javascript: void(0)", onclick: "showHide('market_#{t.id}')", onfocus: "this.blur()", class: "text_in_box" %><br/></div>
+    <div class="box_open" id="market_<%= t.id %>" style="display:none;">
+        <div>판매자 : <%= t.nickname %></div>
+        <div>작성 : <%= t.date %></div>
+        <div><%= link_to "[원본글 이동]", t.url.gsub("m.", ""), target: "_blank" %></div>
+        <hr/>
+        <div style="white-space: pre-wrap;"><%= t.content %></div>
+    </div>
+<% end %>
+
+
+<%# 아래 영역 부터는 CSS 및 Javascript 관련 코드입니다. %>
+<!-- 박스 제목을 클릭 시 내용이 접혔다 피는 효과를 돕는 javascipt -->
+<script>
+    function showHide(id) {
+        var obj = document.getElementById(id);
+        if (obj.style.display == 'none')
+            obj.style.display = 'block';
+        else
+            obj.style.display = 'none';
+    }
+</script>
+
+<style>
+    /* 박스(펼침 비활성화 상태) */
+    .box {
+        background-color: #d4d4d4;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    
+    /* 박스(펼침 활성화 상태) */
+    .box_open {
+        background-color: #fff3e8;
+        padding: 10px;
+    }
+    
+    /* 비펼침 박스 내 글자 꾸밈(하이퍼링크 처리 된 글자의 밑줄 제거) */
+    .text_in_box {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+</style>
