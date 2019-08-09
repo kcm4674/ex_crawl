@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'n_cafe/index'
   root 'posts#index'
 
   devise_for :users  
