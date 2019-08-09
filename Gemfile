@@ -68,3 +68,6 @@ gem 'rails_db'
 
 ## KEY 보안을 위한 Gem
 gem 'figaro'
+
+## Whenever Gem (시간 혹은 분 단위로 자동으로 무언가의 작업이 이루어지도록 돕는 Gem / 리눅스의 Crontab 역할)
+gem 'whenever'
