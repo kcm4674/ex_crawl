@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root 'n_cafe#index'
+  
   get 'n_cafe/index'
-  root 'posts#index'
 
   devise_for :users  
   resources :posts
